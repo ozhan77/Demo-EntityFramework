@@ -16,6 +16,20 @@ namespace EntitityFramework
                 return context.Produts.ToList();
             }
         }
+        public List<Product> GetByName(string key)
+        {
+            using (ECommerceContext context = new ECommerceContext())
+            {
+                return context.Produts.Where(p => p.Name.Contains(key)).ToList();
+            }
+        }
+        public List<Product> GetByUnitPrice(string key)
+        {
+            using (ECommerceContext context = new ECommerceContext())
+            {
+                return context.Produts.Where(p => p.UnitPrice>Convert.ToInt16(key)).ToList();
+            }
+        }
         public void Add(Product product)
         {
             using (ECommerceContext context = new ECommerceContext())
